@@ -44,6 +44,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //マップタイプ等の設定
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.setTrafficEnabled(true);
+        mMap.setBuildingsEnabled(true);
+
         // マーカーを追加
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.828984, 140.734751)).title("青森"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.805702, 140.769485)).title("筒井"));
@@ -55,24 +60,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.827944, 140.672123)).title("津軽新城"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.791202, 140.635012)).title("鶴ヶ坂"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.756667, 140.587853)).title("大釈迦"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.710677, 140.581121)).title("浪岡"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.856964, 140.690292)).title("油川"));
 
         //追加情報付きマーカー
         MarkerOptions opt = new MarkerOptions();
         opt.position(new LatLng(35.681401, 139.767211));
-        opt.title("東京駅");
+        opt.title("東京");
         opt.snippet("新幹線駅");
         opt.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
         Marker m1 = mMap.addMarker(opt);
         m1.showInfoWindow();
 
         opt.position(new LatLng(40.827445, 140.693479));
-        opt.title("新青森駅");
+        opt.title("新青森");
         Marker m2 = mMap.addMarker(opt);
         m2.showInfoWindow();
 
 
         //視点を移動 + ズーム
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.784442, 140.780567), 12));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.784442, 140.780567), 10));
 
         //現在地を表示
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
