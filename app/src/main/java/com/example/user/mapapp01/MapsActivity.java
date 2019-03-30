@@ -45,9 +45,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         //マップタイプ等の設定
-        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        mMap.setTrafficEnabled(true);
-        mMap.setBuildingsEnabled(true);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+//        mMap.setTrafficEnabled(true);
+//        mMap.setBuildingsEnabled(true);
 
         // マーカーを追加
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.828984, 140.734751)).title("青森"));
@@ -62,6 +62,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.756667, 140.587853)).title("大釈迦"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.710677, 140.581121)).title("浪岡"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.856964, 140.690292)).title("油川"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.886971, 140.674380)).title("津軽宮田"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.903136, 140.672245)).title("奥内"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.917228, 140.665872)).title("左堰"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.931478, 140.662471)).title("後潟"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.949122, 140.6561521)).title("中沢"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.969590, 140.654623)).title("蓬田"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.987754, 140.652407)).title("郷沢"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.007906, 140.648370)).title("瀬辺地"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.038312, 140.642423)).title("蟹田"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.051639, 140.596724)).title("中小国"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.065800, 140.559833)).title("大平"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.145946, 140.514188)).title("津軽二股"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.163135, 140.507563)).title("大川平"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.179535, 140.490732)).title("今別"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.180563, 140.471868)).title("津軽浜名"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(41.185268, 140.444263)).title("三厩"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.670606, 140.543642)).title("北常盤"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.646712, 140.521288)).title("川部"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.621621, 140.497886)).title("撫牛子"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.599196, 140.485196)).title("弘前"));
 
         //追加情報付きマーカー
         MarkerOptions opt = new MarkerOptions();
@@ -69,13 +89,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         opt.title("東京");
         opt.snippet("新幹線駅");
         opt.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
-        Marker m1 = mMap.addMarker(opt);
-        m1.showInfoWindow();
+        mMap.addMarker(opt);
 
         opt.position(new LatLng(40.827445, 140.693479));
         opt.title("新青森");
         Marker m2 = mMap.addMarker(opt);
         m2.showInfoWindow();
+
+        opt.position(new LatLng(41.145170, 140.515754));
+        opt.title("奥津軽いまべつ");
+        mMap.addMarker(opt);
 
 
         //視点を移動 + ズーム
@@ -90,17 +113,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         mMap.setMyLocationEnabled(true);
 
-        //ロングクリック
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                mMap.addMarker(new MarkerOptions()
-                        .position(latLng)
-                        .title("ここ")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                );
-            }
-        });
+//        //ロングクリック
+//        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+//            @Override
+//            public void onMapLongClick(LatLng latLng) {
+//                mMap.addMarker(new MarkerOptions()
+//                        .position(latLng)
+//                        .title("ここ")
+//                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+//                );
+//            }
+//        });
 
 //        //クリック
 //        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -118,7 +141,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(MapsActivity.this, marker.getTitle() + "を押したよ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MapsActivity.this, marker.getTitle() + "駅を押したよ", Toast.LENGTH_SHORT).show();
             }
         });
 
