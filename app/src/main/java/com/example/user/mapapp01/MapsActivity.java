@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -43,9 +44,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // マーカーを追加
 
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.784442, 140.780567)).title("青森大学の池"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.834641, 140.702313)).title("コロナ(ry"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.607972, 140.463580)).title("弘前城"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.828984, 140.734751)).title("青森駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.805702, 140.769485)).title("筒井駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.810069, 140.782475)).title("東青森駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳駅"));
+
 
         //視点を移動 + ズーム
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.784442, 140.780567), 12));
@@ -58,5 +62,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         mMap.setMyLocationEnabled(true);
+
+        //ロングクリック
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                mMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title("ここ")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                );
+            }
+        });
+
+//        //クリック
+//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+//            @Override
+//            public void onMapClick(LatLng latLng) {
+//                mMap.addMarker(new MarkerOptions()
+//                        .position(latLng)
+//                        .title("ここ")
+//                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
+//                );
+//            }
+//        });
+
     }
 }
