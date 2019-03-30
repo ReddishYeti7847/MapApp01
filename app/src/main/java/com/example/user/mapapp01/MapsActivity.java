@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -44,15 +45,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // マーカーを追加
-
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.828984, 140.734751)).title("青森駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.805702, 140.769485)).title("筒井駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.810069, 140.782475)).title("東青森駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.833919, 140.807246)).title("矢田前駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.846173, 140.817009)).title("野内駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.891364, 140.862356)).title("浅虫温泉駅"));
-
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.828984, 140.734751)).title("青森"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.805702, 140.769485)).title("筒井"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.810069, 140.782475)).title("東青森"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.833919, 140.807246)).title("矢田前"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.846173, 140.817009)).title("野内"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.891364, 140.862356)).title("浅虫温泉"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.827944, 140.672123)).title("津軽新城"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.791202, 140.635012)).title("鶴ヶ坂"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.756667, 140.587853)).title("大釈迦"));
 
         //追加情報付きマーカー
         MarkerOptions opt = new MarkerOptions();
@@ -104,6 +106,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                );
 //            }
 //        });
+
+        //InfoWindowのタップを検出
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Toast.makeText(MapsActivity.this, marker.getTitle() + "を押したよ", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
