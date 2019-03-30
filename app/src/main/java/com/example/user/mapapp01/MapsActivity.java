@@ -12,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -48,7 +49,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.805702, 140.769485)).title("筒井駅"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.810069, 140.782475)).title("東青森駅"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳駅"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(40.817911, 140.797756)).title("小柳駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.833919, 140.807246)).title("矢田前駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.846173, 140.817009)).title("野内駅"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(40.891364, 140.862356)).title("浅虫温泉駅"));
+
+
+        //追加情報付きマーカー
+        MarkerOptions opt = new MarkerOptions();
+        opt.position(new LatLng(35.681401, 139.767211));
+        opt.title("東京駅");
+        opt.snippet("新幹線駅");
+        opt.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
+        Marker m1 = mMap.addMarker(opt);
+        m1.showInfoWindow();
+
+        opt.position(new LatLng(40.827445, 140.693479));
+        opt.title("新青森駅");
+        Marker m2 = mMap.addMarker(opt);
+        m2.showInfoWindow();
 
 
         //視点を移動 + ズーム
